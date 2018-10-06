@@ -13,7 +13,7 @@
     <style>
         body
         {
-            background: url("images/aesthetic1.jpg");
+            background: url("Resources/images/aesthetic1.jpg");
             background-size: cover;
         }
         .loginCard
@@ -74,7 +74,7 @@
 
 
     <div class="loginCard">
-        <img src="images/signup_icon_1.png" height="128" class="loginIcon">
+        <img src="Resources/images/signup_icon_1.png" height="128" class="loginIcon">
         <form action="servlet/LoginController" id="loginForm" method="post">
             <br>
             <br>

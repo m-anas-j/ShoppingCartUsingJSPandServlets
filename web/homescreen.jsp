@@ -56,7 +56,7 @@
             border-radius: 5px;
         }
         input[type=password] {
-            border: 1px dotted #999;
+            border: 1px solid #999;
             height: 20px;
             border-radius: 5px;
         }
@@ -73,7 +73,7 @@
     //Database connection
     ItemDatabaseHandler itemDatabaseHandler = new ItemDatabaseHandler("mayosenpai","mayosenpai");
     ResultSet result = itemDatabaseHandler.getItems();
-    ArrayList<CartItemBean> itemBeans = new ArrayList<>();
+    ArrayList<CartItemBean> cartItemBeans = new ArrayList<>();
     int j = 0;
     try
     {
@@ -95,7 +95,7 @@
             itemBean.setDescription(description);
             itemBean.setSerialNumber(serialNumber);
             itemBean.setUrl(imageUrl);
-            itemBeans.add(itemBean);
+            cartItemBeans.add(itemBean);
             /*try
             {
                 out.println(itemBeans.get(j).getName());
@@ -136,7 +136,7 @@
             <p>yay yay yay</p>
 
             <%
-                for (int i=0; i<itemBeans.size();i++)
+                for (int i=0; i<cartItemBeans.size();i++)
                 {
             %>
                     <div style="margin: 10px;
@@ -145,17 +145,17 @@
                     border-radius: 10px;
                     width: fit-content;">
                         <form action="servlet/CartController" method="post" >
-                            <%=itemBeans.get(i).getName()%> <input type="hidden" name="itemName" value="<%=itemBeans.get(i).getName()%>">
+                            <%=cartItemBeans.get(i).getName()%> <input type="hidden" name="itemName" value="<%=cartItemBeans.get(i).getName()%>">
                             <br>
-                            Serial Number: AJ135 <input type="hidden" name="itemSerialNumber" value="<%=itemBeans.get(i).getSerialNumber()%>">
+                            Serial Number: AJ135 <input type="hidden" name="itemSerialNumber" value="<%=cartItemBeans.get(i).getSerialNumber()%>">
                             <br>
-                            Image: <img src="<%=itemBeans.get(i).getUrl()%>" width="300" height="300">
+                            Image: <img src="<%=cartItemBeans.get(i).getUrl()%>" width="300" height="300">
                             <br>
-                            Description: <%=itemBeans.get(i).getDescription()%><input type="hidden" name="itemDescription" value="<%=itemBeans.get(i).getDescription()%>">
+                            Description: <%=cartItemBeans.get(i).getDescription()%><input type="hidden" name="itemDescription" value="<%=cartItemBeans.get(i).getDescription()%>">
                             <br>
-                            Quantity: <input type="text" name="itemQuantity" value="<%=itemBeans.get(i).getQuantity()%>">
+                            Quantity: <input type="text" name="itemQuantity" value="<%=cartItemBeans.get(i).getQuantity()%>">
                             <br>
-                            Price: <%=itemBeans.get(i).getUnitCost()%>$ <input type="hidden" name="itemCost" value="<%=itemBeans.get(i).getUnitCost()%>">
+                            Price: <%=cartItemBeans.get(i).getUnitCost()%>$ <input type="hidden" name="itemCost" value="<%=cartItemBeans.get(i).getUnitCost()%>">
                             <br>
                             <input type="submit" value="Add to cart" name="addToCart">
                             <br>
