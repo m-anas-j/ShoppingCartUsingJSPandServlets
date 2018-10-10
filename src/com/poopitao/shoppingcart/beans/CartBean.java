@@ -34,10 +34,10 @@ public class CartBean implements Serializable {
     public void addItemToCart(CartItemBean newItem)
     {
         cartItemList.add(newItem);
-        calculateTotalCost(newItem.getName());
+        //calculateTotalCost(newItem.getName());
     }
 
-    public void addItemToCart(String _name, String _serialNumber, String _description, double _unitCost, int _quantity)
+    public void addItemToCart(String _name, String _serialNumber, String _description, double _unitCost, int _quantity, String _imageUrl)
     {
         if (_quantity!=0)
         {
@@ -62,6 +62,7 @@ public class CartBean implements Serializable {
                 newItem.setSerialNumber(_serialNumber);
                 newItem.setUnitCost(_unitCost);
                 newItem.setUnitTotalCost(_unitCost*_quantity);
+                newItem.setUrl(_imageUrl);
                 cartItemList.add(newItem);
             }
             calculateTotalCost(_name);

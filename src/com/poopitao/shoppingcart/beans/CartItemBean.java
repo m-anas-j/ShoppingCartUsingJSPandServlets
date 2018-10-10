@@ -13,6 +13,22 @@ public class CartItemBean implements Serializable{
     private int quantity;
     private String url;
 
+    public  CartItemBean()
+    {
+
+    }
+
+    public CartItemBean(String _name, String _serialNumber, String _description, double _unitCost, int _quantity, String _imageUrl)
+    {
+        name = _name;
+        serialNumber = _serialNumber;
+        description = _description;
+        unitCost = _unitCost;
+        quantity = _quantity;
+        unitTotalCost = _unitCost*_quantity;
+        url = _imageUrl;
+    }
+
     public String getName() {
         return name;
     }

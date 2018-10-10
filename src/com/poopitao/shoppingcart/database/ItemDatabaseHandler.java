@@ -1,6 +1,8 @@
 package com.poopitao.shoppingcart.database;
 
 
+import com.poopitao.shoppingcart.beans.CartItemBean;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -42,12 +44,40 @@ public class ItemDatabaseHandler {
         }
     }
 
+    public CartItemBean getSingleItem(String _name)
+    {
+        String query = "SELECT * FROM ITEM_LIST WHERE NAME IN '" + _name + "'";
+        try
+        {
+
+            result = statement.executeQuery(query);
+            CartItemBean requiredItem = null;
+            while (result.next())
+            {
+                String name = result.getString("NAME");
+                String serialNumber = result.getString("SERIALNUMBER");
+                String description = result.getString("DESCRIPTION");
+                double unitCost = result.getDouble("UNITCOST");
+                int quantity = result.getInt("QUANTITY");
+                String imageUrl = result.getString("IMAGEURL");
+                requiredItem = new CartItemBean(name,serialNumber,description,unitCost,quantity,imageUrl);
+            }
+
+            return requiredItem;
+
+        }catch (SQLException e)
+        {
+            System.out.println("Exception in fetching required item. " + e);
+            return null;
+        }
+    }
+
 
     public void clearMemory() throws SQLException
     {
         con.close();
         statement.close();
-        System.out.println("Thank you for taking care of me <3");
+        System.out.println("Thank you for taking care of a little ol database like me senpai <3");
     }
 
 
